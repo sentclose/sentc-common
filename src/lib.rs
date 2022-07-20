@@ -1,6 +1,6 @@
 //! # Sentc common to communicate with the backend api
 //!
-//! The input and output for and from the server
+//! The input and output for and from the server. The server output and input are json strings.
 //!
 //! Contains type def for the ids.
 //!
