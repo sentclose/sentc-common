@@ -2,7 +2,8 @@
 //!
 //! The input and output for and from the server. The server output and input are json strings.
 //!
-//! Contains type def for the ids.
+//! Contains type def for the ids. Ids are used internally.
+//! A UserId is not the user identifier which is sued to login.
 //!
 //! Non std with alloc
 
