@@ -22,3 +22,8 @@ pub type UserId = GeneralIdFormat;
 pub type EncryptionKeyPairId = GeneralIdFormat;
 pub type SignKeyPairId = GeneralIdFormat;
 pub type SymKeyId = GeneralIdFormat;
+
+pub type CustomerId = GeneralIdFormat;
+pub type CustomerSecretTokenId = GeneralIdFormat;
+pub type CustomerPublicTokenId = GeneralIdFormat;
+pub type AppId = GeneralIdFormat;
