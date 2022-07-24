@@ -100,7 +100,7 @@ impl RegisterData
 #[derive(Serialize, Deserialize)]
 pub struct RegisterServerOutput
 {
-	pub user_id: String,
+	pub user_id: UserId,
 	pub user_identifier: String,
 }
 
