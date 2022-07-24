@@ -98,6 +98,26 @@ impl RegisterData
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct RegisterServerOutput
+{
+	pub user_id: String,
+	pub user_identifier: String,
+}
+
+impl RegisterServerOutput
+{
+	pub fn from_string(v: &str) -> serde_json::Result<Self>
+	{
+		from_str::<Self>(v)
+	}
+
+	pub fn to_string(&self) -> serde_json::Result<String>
+	{
+		to_string(self)
+	}
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct ChangePasswordData
 {
 	pub new_derived_alg: String,
