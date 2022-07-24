@@ -1,7 +1,7 @@
 use alloc::string::String;
 
 use serde::{Deserialize, Serialize};
-use serde_json::from_str;
+use serde_json::{from_str, to_string};
 
 #[derive(Serialize, Deserialize)]
 pub struct ServerOutput<T: Serialize>
@@ -20,5 +20,10 @@ impl<'de, T: Serialize + Deserialize<'de>> ServerOutput<T>
 	pub fn from_string(v: &'de str) -> serde_json::Result<Self>
 	{
 		from_str::<Self>(v)
+	}
+
+	pub fn to_string(&self) -> serde_json::Result<String>
+	{
+		to_string(self)
 	}
 }
