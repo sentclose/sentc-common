@@ -352,3 +352,10 @@ impl MultipleLoginServerOutput
 		from_str::<Self>(v)
 	}
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct UserDeleteServerOutput
+{
+	pub msg: String,
+	pub user_id: String,
+}
