@@ -250,6 +250,7 @@ impl PrepareLoginSaltServerOutput
 pub struct DoneLoginServerInput
 {
 	pub auth_key: String,
+	pub user_identifier: String,
 }
 
 impl DoneLoginServerInput
@@ -279,6 +280,7 @@ pub struct DoneLoginServerKeysOutput
 	pub keypair_encrypt_id: EncryptionKeyPairId,
 	pub keypair_sign_id: SignKeyPairId,
 	pub jwt: String,
+	pub user_id: UserId,
 }
 
 impl DoneLoginServerKeysOutput
