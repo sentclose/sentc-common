@@ -31,3 +31,4 @@ pub type CustomerId = GeneralIdFormat;
 pub type CustomerSecretTokenId = GeneralIdFormat;
 pub type CustomerPublicTokenId = GeneralIdFormat;
 pub type AppId = GeneralIdFormat;
+pub type JwtKeyId = GeneralIdFormat;
