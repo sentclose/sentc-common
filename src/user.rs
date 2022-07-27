@@ -142,6 +142,26 @@ impl ChangePasswordData
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct ChangePasswordServerOut
+{
+	pub user_id: UserId,
+	pub msg: String,
+}
+
+impl ChangePasswordServerOut
+{
+	pub fn from_string(v: &str) -> serde_json::Result<Self>
+	{
+		from_str::<Self>(v)
+	}
+
+	pub fn to_string(&self) -> serde_json::Result<String>
+	{
+		to_string(self)
+	}
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct ResetPasswordData
 {
 	pub client_random_value: String, //don't use the enum for out, we will get the enum form the derived alg on the server (because the rand value is only used on the server)
@@ -386,7 +406,7 @@ pub struct UserUpdateServerOut
 {
 	pub user_identifier: String,
 	pub user_id: UserId,
-	pub msg: String
+	pub msg: String,
 }
 
 impl UserUpdateServerOut
