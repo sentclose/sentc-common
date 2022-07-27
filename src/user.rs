@@ -186,6 +186,26 @@ impl ResetPasswordData
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct ResetPasswordServerOutput
+{
+	pub user_id: UserId,
+	pub msg: String,
+}
+
+impl ResetPasswordServerOutput
+{
+	pub fn to_string(&self) -> serde_json::Result<String>
+	{
+		to_string(self)
+	}
+
+	pub fn from_string(v: &str) -> serde_json::Result<Self>
+	{
+		from_str::<Self>(v)
+	}
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct UserPublicKeyData
 {
 	pub public_key_pem: String,
