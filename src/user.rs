@@ -361,3 +361,43 @@ pub struct UserDeleteServerOutput
 	pub msg: String,
 	pub user_id: String,
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct UserUpdateServerInput
+{
+	pub user_identifier: String,
+}
+
+impl UserUpdateServerInput
+{
+	pub fn to_string(&self) -> serde_json::Result<String>
+	{
+		to_string(self)
+	}
+
+	pub fn from_string(v: &str) -> serde_json::Result<Self>
+	{
+		from_str::<Self>(v)
+	}
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct UserUpdateServerOut
+{
+	pub user_identifier: String,
+	pub user_id: UserId,
+	pub msg: String
+}
+
+impl UserUpdateServerOut
+{
+	pub fn to_string(&self) -> serde_json::Result<String>
+	{
+		to_string(self)
+	}
+
+	pub fn from_string(v: &str) -> serde_json::Result<Self>
+	{
+		from_str::<Self>(v)
+	}
+}
