@@ -27,3 +27,6 @@ impl<'de, T: Serialize + Deserialize<'de>> ServerOutput<T>
 		to_string(self)
 	}
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct ServerSuccessOutput(pub String);
