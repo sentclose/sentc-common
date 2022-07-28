@@ -203,5 +203,4 @@ impl GroupKeysForNewMemberServerInput
 pub struct GroupDeleteServerOutput
 {
 	pub group_id: GroupId,
-	pub msg: String,
 }
