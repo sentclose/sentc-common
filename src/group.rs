@@ -33,6 +33,12 @@ impl CreateData
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct GroupCreateOutput
+{
+	pub group_id: GroupId,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct KeyRotationData
 {
 	pub encrypted_group_key_by_user: String, //encrypted by invoker public key
@@ -191,4 +197,11 @@ impl GroupKeysForNewMemberServerInput
 	{
 		to_string(self)
 	}
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct GroupDeleteServerOutput
+{
+	pub group_id: GroupId,
+	pub msg: String,
 }
