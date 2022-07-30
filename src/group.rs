@@ -4,7 +4,7 @@ use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
 use serde_json::{from_str, to_string};
 
-use crate::{EncryptionKeyPairId, GroupId, SymKeyId};
+use crate::{EncryptionKeyPairId, GroupId, SymKeyId, UserId};
 
 #[derive(Serialize, Deserialize)]
 pub struct CreateData
@@ -205,4 +205,11 @@ impl GroupKeysForNewMemberServerInput
 pub struct GroupDeleteServerOutput
 {
 	pub group_id: GroupId,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct GroupJoinReqList
+{
+	pub user_id: UserId,
+	pub time: u128,
 }
