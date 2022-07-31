@@ -68,12 +68,21 @@ impl KeyRotationData
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct KeyRotationStartServerOutput
+{
+	pub group_id: GroupId,
+	pub key_id: SymKeyId,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct KeyRotationInput
 {
 	pub encrypted_ephemeral_key_by_group_key_and_public_key: String,
 	pub encrypted_group_key_by_ephemeral: String,
 	pub ephemeral_alg: String,
-	pub previous_group_key_id: SymKeyId, //use this in the client sdk to load the right group key from the storage
+	pub encrypted_eph_key_key_id: EncryptionKeyPairId, //the public key id which was used to encrypt the eph key on the server.
+	pub previous_group_key_id: SymKeyId,               //use this in the client sdk to load the right group key from the storage
+	pub time: u128,
 }
 
 impl KeyRotationInput
@@ -94,6 +103,7 @@ pub struct DoneKeyRotationData
 {
 	pub encrypted_new_group_key: String,
 	pub public_key_id: EncryptionKeyPairId,
+	pub encrypted_alg: String, //the alg of the public key
 }
 
 impl DoneKeyRotationData
