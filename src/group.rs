@@ -213,3 +213,10 @@ pub struct GroupJoinReqList
 	pub user_id: UserId,
 	pub time: u128,
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct GroupInviteReqList
+{
+	pub group_id: GroupId,
+	pub time: u128,
+}
