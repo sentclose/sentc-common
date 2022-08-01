@@ -83,6 +83,7 @@ pub struct KeyRotationInput
 	pub encrypted_eph_key_key_id: EncryptionKeyPairId, //the public key id which was used to encrypt the eph key on the server.
 	pub previous_group_key_id: SymKeyId,               //use this in the client sdk to load the right group key from the storage
 	pub time: u128,
+	pub new_group_key_id: SymKeyId, //to done the key rotation on the server
 }
 
 impl KeyRotationInput
