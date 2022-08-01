@@ -192,6 +192,7 @@ pub struct GroupKeysForNewMember
 {
 	pub encrypted_group_key: String, //base64 encoded
 	pub alg: String,                 //the group key alg
+	pub encrypted_alg: String,       //the alg of the public encryption
 	pub key_id: SymKeyId,
 	pub user_public_key_id: EncryptionKeyPairId,
 }
