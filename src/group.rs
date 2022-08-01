@@ -142,6 +142,7 @@ pub struct GroupKeyServerOutput
 	pub keypair_encrypt_alg: String,
 	pub key_pair_id: EncryptionKeyPairId,
 	pub user_public_key_id: EncryptionKeyPairId, //to know what private key we should use to decrypt
+	pub time: u128,
 }
 
 impl GroupKeyServerOutput
