@@ -16,7 +16,6 @@ pub struct CreateData
 	pub public_group_key: String,
 	pub keypair_encrypt_alg: String,
 	pub creator_public_key_id: EncryptionKeyPairId,
-	pub parent_group_id: Option<GroupId>,
 }
 
 impl CreateData
