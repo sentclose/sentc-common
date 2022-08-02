@@ -199,7 +199,11 @@ pub struct GroupKeysForNewMember
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct GroupKeysForNewMemberServerInput(pub Vec<GroupKeysForNewMember>);
+pub struct GroupKeysForNewMemberServerInput
+{
+	pub keys: Vec<GroupKeysForNewMember>,
+	pub key_session: bool, //when there are mor than 100 keys in this group -> the client wants a session
+}
 
 impl GroupKeysForNewMemberServerInput
 {
@@ -232,4 +236,20 @@ pub struct GroupInviteReqList
 {
 	pub group_id: GroupId,
 	pub time: u128,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct GroupInviteServerOutput
+{
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub session_id: Option<String>,
+	pub message: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct GroupAcceptJoinReqServerOutput
+{
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub session_id: Option<String>,
+	pub message: String,
 }
