@@ -252,3 +252,23 @@ pub struct GroupAcceptJoinReqServerOutput
 	pub session_id: Option<String>,
 	pub message: String,
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct GroupChangeRankServerInput
+{
+	pub changed_user_id: UserId,
+	pub new_rank: i32,
+}
+
+impl GroupChangeRankServerInput
+{
+	pub fn from_string(v: &str) -> serde_json::Result<Self>
+	{
+		from_str::<Self>(v)
+	}
+
+	pub fn to_string(&self) -> serde_json::Result<String>
+	{
+		to_string(self)
+	}
+}
