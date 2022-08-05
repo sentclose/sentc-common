@@ -297,6 +297,13 @@ impl DoneLoginServerKeysOutput
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct DoneLoginLightServerOutput
+{
+	pub user_id: UserId,
+	pub jwt: String,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct PrepareLoginForKeyUpdateServerOutput
 {
 	pub client_random_value: String, //instead of prepare login (where the server creates the salt), for key update the client creates the salt for the old keys
