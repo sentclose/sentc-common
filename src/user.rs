@@ -207,6 +207,55 @@ impl UserVerifyKeyData
 	}
 }
 
+/**
+All public user data from server
+*/
+#[derive(Serialize, Deserialize)]
+pub struct UserPublicData
+{
+	pub public_key_id: EncryptionKeyPairId,
+	pub public_key: String,
+	pub public_key_alg: String,
+
+	pub verify_key_id: SignKeyPairId,
+	pub verify_key: String,
+	pub verify_alg: String,
+}
+
+impl UserPublicData
+{
+	pub fn from_string(v: &str) -> serde_json::Result<Self>
+	{
+		from_str::<Self>(v)
+	}
+
+	pub fn to_string(&self) -> serde_json::Result<String>
+	{
+		to_string(self)
+	}
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct UserPublicKeyDataServerOutput
+{
+	pub public_key_id: EncryptionKeyPairId,
+	pub public_key: String,
+	pub public_key_alg: String,
+}
+
+impl UserPublicKeyDataServerOutput
+{
+	pub fn from_string(v: &str) -> serde_json::Result<Self>
+	{
+		from_str::<Self>(v)
+	}
+
+	pub fn to_string(&self) -> serde_json::Result<String>
+	{
+		to_string(self)
+	}
+}
+
 #[derive(Serialize, Deserialize)]
 pub struct PrepareLoginServerInput
 {
