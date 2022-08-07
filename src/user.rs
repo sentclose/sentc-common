@@ -257,6 +257,27 @@ impl UserPublicKeyDataServerOutput
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct UserVerifyKeyDataServerOutput
+{
+	pub verify_key_id: EncryptionKeyPairId,
+	pub verify_key: String,
+	pub verify_key_alg: String,
+}
+
+impl UserVerifyKeyDataServerOutput
+{
+	pub fn from_string(v: &str) -> serde_json::Result<Self>
+	{
+		from_str::<Self>(v)
+	}
+
+	pub fn to_string(&self) -> serde_json::Result<String>
+	{
+		to_string(self)
+	}
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct PrepareLoginServerInput
 {
 	pub user_identifier: String,
