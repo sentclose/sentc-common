@@ -350,6 +350,7 @@ pub struct DoneLoginServerKeysOutput
 	pub keypair_encrypt_id: EncryptionKeyPairId,
 	pub keypair_sign_id: SignKeyPairId,
 	pub jwt: String,
+	pub refresh_token: String,
 	pub user_id: UserId,
 }
 
@@ -371,6 +372,12 @@ pub struct DoneLoginLightServerOutput
 {
 	pub user_id: UserId,
 	pub jwt: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct JwtRefreshInput
+{
+	pub refresh_token: String,
 }
 
 #[derive(Serialize, Deserialize)]
