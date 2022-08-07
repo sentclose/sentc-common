@@ -380,6 +380,19 @@ pub struct JwtRefreshInput
 	pub refresh_token: String,
 }
 
+impl JwtRefreshInput
+{
+	pub fn to_string(&self) -> serde_json::Result<String>
+	{
+		to_string(self)
+	}
+
+	pub fn from_string(v: &str) -> serde_json::Result<Self>
+	{
+		from_str::<Self>(v)
+	}
+}
+
 #[derive(Serialize, Deserialize)]
 pub struct PrepareLoginForKeyUpdateServerOutput
 {
