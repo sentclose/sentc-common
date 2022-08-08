@@ -65,6 +65,7 @@ pub struct GeneratedSymKeyHeadServerOutput
 	pub encrypted_key_string: String,
 	pub master_key_id: String,
 	pub key_id: String,
+	pub time: u128,
 }
 
 impl GeneratedSymKeyHeadServerOutput
