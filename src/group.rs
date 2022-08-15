@@ -188,6 +188,14 @@ impl GroupServerData
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct GroupUserListItem
+{
+	pub user_id: UserId,
+	pub rank: i32,
+	pub joined_time: u128,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct GroupKeysForNewMember
 {
 	pub encrypted_group_key: String, //base64 encoded
