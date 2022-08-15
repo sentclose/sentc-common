@@ -344,7 +344,6 @@ pub struct DoneLoginServerOutput
 	pub jwt: String,
 	pub refresh_token: String,
 	pub user_id: UserId,
-	pub group_invites: Vec<GroupInviteReqList>,
 }
 
 //as base64 encoded string from the server
