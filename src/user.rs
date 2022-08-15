@@ -337,6 +337,16 @@ impl DoneLoginServerInput
 	}
 }
 
+#[derive(Serialize, Deserialize)]
+pub struct DoneLoginServerOutput
+{
+	pub keys: DoneLoginServerKeysOutput,
+	pub jwt: String,
+	pub refresh_token: String,
+	pub user_id: UserId,
+	pub group_invites: Vec<GroupInviteReqList>,
+}
+
 //as base64 encoded string from the server
 #[derive(Serialize, Deserialize)]
 pub struct DoneLoginServerKeysOutput
@@ -350,9 +360,6 @@ pub struct DoneLoginServerKeysOutput
 	pub keypair_sign_alg: String,
 	pub keypair_encrypt_id: EncryptionKeyPairId,
 	pub keypair_sign_id: SignKeyPairId,
-	pub jwt: String,
-	pub refresh_token: String,
-	pub user_id: UserId,
 }
 
 impl DoneLoginServerKeysOutput
