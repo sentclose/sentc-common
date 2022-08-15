@@ -4,6 +4,7 @@ use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
 use serde_json::{from_str, to_string};
 
+use crate::group::GroupInviteReqList;
 use crate::{EncryptionKeyPairId, SignKeyPairId, SymKeyId, UserId};
 
 #[derive(Serialize, Deserialize)]
@@ -372,6 +373,13 @@ pub struct DoneLoginLightServerOutput
 {
 	pub user_id: UserId,
 	pub jwt: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct UserInitServerOutput
+{
+	pub jwt: String,
+	pub invites: Vec<GroupInviteReqList>,
 }
 
 #[derive(Serialize, Deserialize)]
