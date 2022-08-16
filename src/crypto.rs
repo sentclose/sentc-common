@@ -42,7 +42,7 @@ pub struct GeneratedSymKeyHeadServerInput
 {
 	pub alg: String,
 	pub encrypted_key_string: String,
-	pub master_key_id: String,
+	pub master_key_id: String, //the id of the key which was used to encrypt this key
 }
 
 impl GeneratedSymKeyHeadServerInput
