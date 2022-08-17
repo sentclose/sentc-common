@@ -187,6 +187,16 @@ impl GroupServerData
 	}
 }
 
+/**
+This values can be changed while the user still caches the old values in the client
+*/
+#[derive(Serialize, Deserialize)]
+pub struct GroupDataCheckUpdateServerOutput
+{
+	pub key_update: bool,
+	pub rank: i32,
+}
+
 #[derive(Serialize, Deserialize)]
 pub struct GroupUserListItem
 {
