@@ -236,12 +236,6 @@ impl GroupKeysForNewMemberServerInput
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct GroupDeleteServerOutput
-{
-	pub group_id: GroupId,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct GroupJoinReqList
 {
 	pub user_id: UserId,
