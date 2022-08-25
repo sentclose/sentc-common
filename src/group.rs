@@ -292,4 +292,5 @@ pub struct ListGroups
 	pub time: u128,
 	pub joined_time: u128,
 	pub rank: i32,
+	pub parent: Option<GroupId>,
 }
