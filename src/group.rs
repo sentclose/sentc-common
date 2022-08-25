@@ -284,3 +284,12 @@ impl GroupChangeRankServerInput
 		to_string(self)
 	}
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct ListGroups
+{
+	pub group_id: GroupId,
+	pub time: u128,
+	pub joined_time: u128,
+	pub rank: i32,
+}
