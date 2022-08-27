@@ -30,6 +30,7 @@ pub type SymKeyId = GeneralIdFormat;
 
 pub type FileId = GeneralIdFormat;
 pub type PartId = GeneralIdFormat;
+pub type FileSessionId = GeneralIdFormat;
 
 pub type CustomerId = GeneralIdFormat;
 pub type CustomerSecretTokenId = GeneralIdFormat;

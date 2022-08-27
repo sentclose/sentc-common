@@ -2,7 +2,7 @@ use alloc::vec::Vec;
 
 use serde::{Deserialize, Serialize};
 
-use crate::{FileId, GeneralIdFormat, PartId, SymKeyId};
+use crate::{FileId, FileSessionId, GeneralIdFormat, PartId, SymKeyId};
 
 /**
 # Who has access to this file
@@ -29,4 +29,19 @@ pub struct FileData
 	pub belongs_to_type: BelongsToType,
 	pub key_id: SymKeyId,
 	pub part_list: Vec<PartId>,
+}
+
+//__________________________________________________________________________________________________
+
+#[derive(Serialize, Deserialize)]
+pub struct FileRegisterInput
+{
+	pub key_id: SymKeyId,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct FileRegisterOutput
+{
+	pub file_id: FileId,
+	pub session_id: FileSessionId,
 }
