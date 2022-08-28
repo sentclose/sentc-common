@@ -37,6 +37,8 @@ pub struct FileData
 pub struct FileRegisterInput
 {
 	pub key_id: SymKeyId,
+	pub belongs_to_id: Option<GeneralIdFormat>,
+	pub belongs_to_type: BelongsToType,
 }
 
 #[derive(Serialize, Deserialize)]
