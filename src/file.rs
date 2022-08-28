@@ -2,7 +2,7 @@ use alloc::vec::Vec;
 
 use serde::{Deserialize, Serialize};
 
-use crate::{FileId, FileSessionId, GeneralIdFormat, PartId, SymKeyId};
+use crate::{FileId, FileSessionId, GeneralIdFormat, PartId, SymKeyId, UserId};
 
 /**
 # Who has access to this file
@@ -22,13 +22,17 @@ pub enum BelongsToType
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct FilePartListItem(pub PartId);
+
+#[derive(Serialize, Deserialize)]
 pub struct FileData
 {
 	pub file_id: FileId,
+	pub owner: UserId,
 	pub belongs_to: Option<GeneralIdFormat>, //can be a group or a user. if belongs to type is none then this is Option::None
 	pub belongs_to_type: BelongsToType,
 	pub key_id: SymKeyId,
-	pub part_list: Vec<PartId>,
+	pub part_list: Vec<FilePartListItem>,
 }
 
 //__________________________________________________________________________________________________
