@@ -22,7 +22,12 @@ pub enum BelongsToType
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct FilePartListItem(pub PartId);
+pub struct FilePartListItem
+{
+	pub part_id: PartId,
+	pub sequence: i32,
+	pub extern_storage: bool,
+}
 
 #[derive(Serialize, Deserialize)]
 pub struct FileData
