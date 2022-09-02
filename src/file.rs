@@ -1,3 +1,4 @@
+use alloc::string::String;
 use alloc::vec::Vec;
 
 use serde::{Deserialize, Serialize};
@@ -37,6 +38,7 @@ pub struct FileData
 	pub belongs_to: Option<GeneralIdFormat>, //can be a group or a user. if belongs to type is none then this is Option::None
 	pub belongs_to_type: BelongsToType,
 	pub key_id: SymKeyId,
+	pub encrypted_file_name: Option<String>,
 	pub part_list: Vec<FilePartListItem>,
 }
 
@@ -48,6 +50,7 @@ pub struct FileRegisterInput
 	pub key_id: SymKeyId,
 	pub belongs_to_id: Option<GeneralIdFormat>,
 	pub belongs_to_type: BelongsToType,
+	pub encrypted_file_name: Option<String>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -55,4 +58,10 @@ pub struct FileRegisterOutput
 {
 	pub file_id: FileId,
 	pub session_id: FileSessionId,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct FileNameUpdate
+{
+	pub encrypted_file_name: Option<String>,
 }
