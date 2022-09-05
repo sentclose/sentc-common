@@ -4,7 +4,7 @@ use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
 use serde_json::{from_str, to_string};
 
-use crate::{EncryptionKeyPairId, GroupId, SymKeyId, UserId};
+use crate::{EncryptionKeyPairId, GroupId, SignKeyPairId, SymKeyId, UserId};
 
 #[derive(Serialize, Deserialize)]
 pub struct CreateData
@@ -16,6 +16,11 @@ pub struct CreateData
 	pub public_group_key: String,
 	pub keypair_encrypt_alg: String,
 	pub creator_public_key_id: EncryptionKeyPairId,
+
+	//only for user group key rotation not for normal
+	pub encrypted_sign_key: Option<String>,
+	pub verify_key: Option<String>,
+	pub keypair_sign_alg: Option<String>,
 }
 
 impl CreateData
@@ -51,6 +56,11 @@ pub struct KeyRotationData
 	pub encrypted_ephemeral_key: String, //encrypted by the old group key. encrypt this key with every other member public key on the server
 	pub previous_group_key_id: SymKeyId,
 	pub invoker_public_key_id: EncryptionKeyPairId,
+
+	//only for user group key rotation not for normal
+	pub encrypted_sign_key: Option<String>,
+	pub verify_key: Option<String>,
+	pub keypair_sign_alg: Option<String>,
 }
 
 impl KeyRotationData
@@ -142,6 +152,11 @@ pub struct GroupKeyServerOutput
 	pub key_pair_id: EncryptionKeyPairId,
 	pub user_public_key_id: EncryptionKeyPairId, //to know what private key we should use to decrypt
 	pub time: u128,
+
+	pub encrypted_sign_key: Option<String>,
+	pub verify_key: Option<String>,
+	pub keypair_sign_alg: Option<String>,
+	pub keypair_sign_id: Option<SignKeyPairId>,
 }
 
 impl GroupKeyServerOutput
