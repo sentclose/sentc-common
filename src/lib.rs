@@ -24,6 +24,7 @@ pub use server_default::ServerOutput;
 type GeneralIdFormat = String;
 pub type GroupId = GeneralIdFormat;
 pub type UserId = GeneralIdFormat;
+pub type DeviceId = GeneralIdFormat;
 pub type EncryptionKeyPairId = GeneralIdFormat;
 pub type SignKeyPairId = GeneralIdFormat;
 pub type SymKeyId = GeneralIdFormat;
