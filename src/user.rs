@@ -4,8 +4,8 @@ use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
 use serde_json::{from_str, to_string};
 
-use crate::group::GroupInviteReqList;
-use crate::{EncryptionKeyPairId, SignKeyPairId, SymKeyId, UserId};
+use crate::group::{CreateData, GroupInviteReqList, GroupKeyServerOutput, GroupKeysForNewMemberServerInput};
+use crate::{DeviceId, EncryptionKeyPairId, GroupId, SignKeyPairId, SymKeyId, UserId};
 
 #[derive(Serialize, Deserialize)]
 pub struct MasterKey
@@ -72,6 +72,30 @@ impl UserIdentifierAvailableServerOutput
 	}
 }
 
+#[derive(Serialize, Deserialize)]
+pub struct UserDeviceRegisterInput
+{
+	pub master_key: MasterKey,
+	pub derived: KeyDerivedData,
+	pub device_identifier: String, //with this the user is called for login. can be username or an id, or an email
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct UserDeviceRegister
+{
+	pub device: UserDeviceRegisterInput,
+	pub group_keys: GroupKeysForNewMemberServerInput,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct UserDeviceRegisterOutput
+{
+	pub device_id: DeviceId,
+	pub device_identifier: String,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub session_id: Option<String>, //for the user group key
+}
+
 /**
 # Register Data for the server api
 
@@ -80,9 +104,8 @@ send this after register to the server
 #[derive(Serialize, Deserialize)]
 pub struct RegisterData
 {
-	pub master_key: MasterKey,
-	pub derived: KeyDerivedData,
-	pub user_identifier: String, //with this the user is called for login. can be username or an id, or an email
+	pub device: UserDeviceRegisterInput, //the first device of the user
+	pub group: CreateData,               //the user group data
 }
 
 impl RegisterData
@@ -102,7 +125,8 @@ impl RegisterData
 pub struct RegisterServerOutput
 {
 	pub user_id: UserId,
-	pub user_identifier: String,
+	pub device_id: DeviceId,
+	pub device_identifier: String,
 }
 
 impl RegisterServerOutput
@@ -321,7 +345,7 @@ impl PrepareLoginSaltServerOutput
 pub struct DoneLoginServerInput
 {
 	pub auth_key: String,
-	pub user_identifier: String,
+	pub device_identifier: String,
 }
 
 impl DoneLoginServerInput
@@ -340,10 +364,10 @@ impl DoneLoginServerInput
 #[derive(Serialize, Deserialize)]
 pub struct DoneLoginServerOutput
 {
-	pub keys: DoneLoginServerKeysOutput,
+	pub device_keys: DoneLoginServerKeysOutput,
 	pub jwt: String,
 	pub refresh_token: String,
-	pub user_id: UserId,
+	pub user_keys: Vec<GroupKeyServerOutput>,
 }
 
 //as base64 encoded string from the server
@@ -359,6 +383,9 @@ pub struct DoneLoginServerKeysOutput
 	pub keypair_sign_alg: String,
 	pub keypair_encrypt_id: EncryptionKeyPairId,
 	pub keypair_sign_id: SignKeyPairId,
+	pub user_id: UserId,
+	pub device_id: DeviceId,
+	pub user_group_id: GroupId,
 }
 
 impl DoneLoginServerKeysOutput
@@ -379,6 +406,7 @@ pub struct DoneLoginLightServerOutput
 {
 	pub user_id: UserId,
 	pub jwt: String,
+	pub device_id: DeviceId,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -473,27 +501,6 @@ pub struct UserUpdateServerInput
 }
 
 impl UserUpdateServerInput
-{
-	pub fn to_string(&self) -> serde_json::Result<String>
-	{
-		to_string(self)
-	}
-
-	pub fn from_string(v: &str) -> serde_json::Result<Self>
-	{
-		from_str::<Self>(v)
-	}
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct UserUpdateServerOut
-{
-	pub user_identifier: String,
-	pub user_id: UserId,
-	pub msg: String,
-}
-
-impl UserUpdateServerOut
 {
 	pub fn to_string(&self) -> serde_json::Result<String>
 	{
