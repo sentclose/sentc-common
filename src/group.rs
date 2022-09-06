@@ -18,8 +18,11 @@ pub struct CreateData
 	pub creator_public_key_id: EncryptionKeyPairId,
 
 	//only for user group key rotation not for normal
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub encrypted_sign_key: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub verify_key: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub keypair_sign_alg: Option<String>,
 }
 
@@ -58,8 +61,11 @@ pub struct KeyRotationData
 	pub invoker_public_key_id: EncryptionKeyPairId,
 
 	//only for user group key rotation not for normal
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub encrypted_sign_key: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub verify_key: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub keypair_sign_alg: Option<String>,
 }
 
@@ -153,9 +159,13 @@ pub struct GroupKeyServerOutput
 	pub user_public_key_id: EncryptionKeyPairId, //to know what private key we should use to decrypt
 	pub time: u128,
 
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub encrypted_sign_key: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub verify_key: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub keypair_sign_alg: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub keypair_sign_id: Option<SignKeyPairId>,
 }
 
