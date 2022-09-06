@@ -4,7 +4,7 @@ use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
 use serde_json::{from_str, to_string};
 
-use crate::group::{CreateData, GroupInviteReqList, GroupKeyServerOutput, GroupKeysForNewMemberServerInput};
+use crate::group::{CreateData, GroupInviteReqList, GroupKeyServerOutput};
 use crate::{DeviceId, EncryptionKeyPairId, GroupId, SignKeyPairId, SymKeyId, UserId};
 
 #[derive(Serialize, Deserialize)]
@@ -81,19 +81,10 @@ pub struct UserDeviceRegisterInput
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct UserDeviceRegister
-{
-	pub device: UserDeviceRegisterInput,
-	pub group_keys: GroupKeysForNewMemberServerInput,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct UserDeviceRegisterOutput
 {
 	pub device_id: DeviceId,
 	pub device_identifier: String,
-	#[serde(skip_serializing_if = "Option::is_none")]
-	pub session_id: Option<String>, //for the user group key
 }
 
 /**
