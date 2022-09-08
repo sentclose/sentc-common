@@ -83,10 +83,11 @@ pub struct UserDeviceRegisterInput
 #[derive(Serialize, Deserialize)]
 pub struct UserDeviceRegisterOutput
 {
-	pub device_id: DeviceId,
+	pub device_id: DeviceId, //device id is also the public key id (keypair_encrypt_id)
 	pub token: String,
 	pub device_identifier: String,
-	pub public_key: String,
+	pub public_key_string: String,
+	pub keypair_encrypt_alg: String,
 }
 
 #[derive(Serialize, Deserialize)]
