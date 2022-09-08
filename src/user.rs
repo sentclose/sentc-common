@@ -86,6 +86,7 @@ pub struct UserDeviceRegisterOutput
 	pub device_id: DeviceId,
 	pub token: String,
 	pub device_identifier: String,
+	pub public_key: String,
 }
 
 #[derive(Serialize, Deserialize)]
