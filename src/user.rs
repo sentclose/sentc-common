@@ -471,6 +471,8 @@ Change or reset password are not possible in time of the key update.
 
 <br>
 
+TODO delete
+
 ## important!
 Don't return this for the first login try. For the first login try just return the PrepareLoginSaltServerOutput of the latest keys!
  */
@@ -512,4 +514,12 @@ impl UserUpdateServerInput
 	{
 		from_str::<Self>(v)
 	}
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct UserDeviceList
+{
+	pub device_id: String,
+	pub time: u128,
+	pub device_identifier: String,
 }
