@@ -65,3 +65,9 @@ pub struct FileNameUpdate
 {
 	pub encrypted_file_name: Option<String>,
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct FilePartRegisterOutput
+{
+	pub part_id: PartId,
+}
