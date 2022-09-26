@@ -403,6 +403,18 @@ impl DoneLoginServerKeysOutput
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct DoneLoginLightOutput
+{
+	pub user_id: UserId,
+	pub jwt: String,
+	pub device_id: DeviceId,
+	pub refresh_token: String,
+}
+
+/**
+For refresh jwt
+*/
+#[derive(Serialize, Deserialize)]
 pub struct DoneLoginLightServerOutput
 {
 	pub user_id: UserId,
