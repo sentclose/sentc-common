@@ -8,6 +8,20 @@ use crate::group::{CreateData, GroupInviteReqList, GroupKeyServerOutput, GroupKe
 use crate::{DeviceId, EncryptionKeyPairId, GroupId, SignKeyPairId, SymKeyId, UserId};
 
 #[derive(Serialize, Deserialize)]
+pub struct CaptchaCreateOutput
+{
+	pub captcha_id: String,
+	pub png: String, //base64 encoded
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct CaptchaInput
+{
+	pub captcha_solution: String,
+	pub captcha_id: String,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct MasterKey
 {
 	pub master_key_alg: String,
