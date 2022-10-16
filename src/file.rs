@@ -48,6 +48,7 @@ pub struct FileData
 pub struct FileRegisterInput
 {
 	pub key_id: SymKeyId,
+	pub master_key_id: String, //can be group key or user private / public key pair id
 	pub belongs_to_id: Option<GeneralIdFormat>,
 	pub belongs_to_type: BelongsToType,
 	pub encrypted_file_name: Option<String>,
