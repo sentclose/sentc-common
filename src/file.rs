@@ -34,6 +34,7 @@ pub struct FilePartListItem
 pub struct FileData
 {
 	pub file_id: FileId,
+	pub master_key_id: String,
 	pub owner: UserId,
 	pub belongs_to: Option<GeneralIdFormat>, //can be a group or a user. if belongs to type is none then this is Option::None
 	pub belongs_to_type: BelongsToType,
