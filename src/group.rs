@@ -182,6 +182,19 @@ impl GroupKeyServerOutput
 	}
 }
 
+#[derive(Serialize, Deserialize)]
+pub enum GroupUserAccessBy
+{
+	User,
+	Parent(GroupId),
+	GroupAsUser(GroupId),
+	GroupAsUserAsParent
+	{
+		parent: GroupId,
+		group_as_user: GroupId,
+	},
+}
+
 /**
 # The data about the group from the server
 
@@ -197,6 +210,7 @@ pub struct GroupServerData
 	pub rank: i32,
 	pub created_time: u128,
 	pub joined_time: u128,
+	pub access_by: GroupUserAccessBy,
 }
 
 impl GroupServerData
@@ -228,6 +242,7 @@ pub struct GroupUserListItem
 	pub user_id: UserId,
 	pub rank: i32,
 	pub joined_time: u128,
+	pub user_type: i32,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -265,6 +280,7 @@ pub struct GroupJoinReqList
 {
 	pub user_id: UserId,
 	pub time: u128,
+	pub user_type: i32, // 0 = normal user, 1 = group as member
 }
 
 #[derive(Serialize, Deserialize)]
