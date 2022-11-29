@@ -280,7 +280,7 @@ pub struct GroupJoinReqList
 {
 	pub user_id: UserId,
 	pub time: u128,
-	pub user_type: i32, // 0 = normal user, 1 = group as member
+	pub user_type: i32, // 0 = normal user, 2 = group as member
 }
 
 #[derive(Serialize, Deserialize)]
