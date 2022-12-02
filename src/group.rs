@@ -196,6 +196,20 @@ pub enum GroupUserAccessBy
 }
 
 /**
+The same as the real group data but without the keys.
+ */
+#[derive(Serialize, Deserialize)]
+pub struct GroupLightServerData
+{
+	pub group_id: GroupId,
+	pub parent_group_id: Option<GroupId>,
+	pub rank: i32,
+	pub created_time: u128,
+	pub joined_time: u128,
+	pub access_by: GroupUserAccessBy,
+}
+
+/**
 # The data about the group from the server
 
 save this in the sdk impl storage
