@@ -349,3 +349,11 @@ pub struct ListGroups
 	pub rank: i32,
 	pub parent: Option<GroupId>,
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct GroupChildrenList
+{
+	pub group_id: GroupId,
+	pub time: u128,
+	pub parent: Option<GroupId>,
+}
