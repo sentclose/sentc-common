@@ -13,6 +13,7 @@ extern crate alloc;
 
 use alloc::string::String;
 
+pub mod content;
 pub mod crypto;
 pub mod file;
 pub mod group;
@@ -28,6 +29,8 @@ pub type DeviceId = GeneralIdFormat;
 pub type EncryptionKeyPairId = GeneralIdFormat;
 pub type SignKeyPairId = GeneralIdFormat;
 pub type SymKeyId = GeneralIdFormat;
+pub type ContentId = GeneralIdFormat;
+pub type CategoryId = GeneralIdFormat;
 
 pub type FileId = GeneralIdFormat;
 pub type PartId = GeneralIdFormat;
