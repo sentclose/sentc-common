@@ -29,3 +29,10 @@ pub struct ListContentItem
 	pub time: u128,
 	pub access_from_group: Option<GroupId>,
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct ContentItemAccess
+{
+	pub access: bool,
+	pub access_from_group: Option<GroupId>,
+}
