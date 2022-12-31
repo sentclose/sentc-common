@@ -26,6 +26,7 @@ pub struct ListContentItem
 	pub belongs_to_user: Option<UserId>,
 	pub creator: UserId,
 	pub time: u128,
+	pub cat_id: Option<CategoryId>,
 	pub access_from_group: Option<GroupId>,
 }
 
