@@ -7,6 +7,7 @@ use crate::{CategoryId, ContentId, GroupId, UserId};
 #[derive(Serialize, Deserialize)]
 pub struct CreateData
 {
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub category: Option<CategoryId>,
 	pub item: String,
 }
