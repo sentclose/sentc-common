@@ -7,7 +7,7 @@ use crate::{CategoryId, ContentId, GroupId, UserId};
 #[derive(Serialize, Deserialize)]
 pub struct CreateData
 {
-	pub cat_id: Option<CategoryId>,
+	pub category: Option<CategoryId>,
 	pub item: String,
 }
 
@@ -26,7 +26,7 @@ pub struct ListContentItem
 	pub belongs_to_user: Option<UserId>,
 	pub creator: UserId,
 	pub time: u128,
-	pub cat_id: Option<CategoryId>,
+	pub category: Option<CategoryId>,
 	pub access_from_group: Option<GroupId>,
 }
 
@@ -35,24 +35,4 @@ pub struct ContentItemAccess
 {
 	pub access: bool,
 	pub access_from_group: Option<GroupId>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ContentCategoryCreateInput
-{
-	pub name: String,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ContentCategoryOutput
-{
-	pub cat_id: CategoryId,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ListContentCategoryItem
-{
-	pub cat_id: CategoryId,
-	pub name: String,
-	pub time: u128,
 }
