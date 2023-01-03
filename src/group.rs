@@ -225,6 +225,7 @@ pub struct GroupServerData
 	pub created_time: u128,
 	pub joined_time: u128,
 	pub access_by: GroupUserAccessBy,
+	pub is_connected_group: bool,
 }
 
 impl GroupServerData
