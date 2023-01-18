@@ -355,6 +355,9 @@ pub struct DoneLoginServerOutput
 	pub jwt: String,
 	pub refresh_token: String,
 	pub user_keys: Vec<GroupKeyServerOutput>,
+	pub encrypted_hmac_key: String,
+	pub encrypted_hmac_alg: String,
+	pub encrypted_hmac_encryption_key_id: SymKeyId, //what group key was used to encrypt this key
 }
 
 //as base64 encoded string from the server

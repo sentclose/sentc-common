@@ -16,6 +16,8 @@ pub struct CreateData
 	pub public_group_key: String,
 	pub keypair_encrypt_alg: String,
 	pub creator_public_key_id: EncryptionKeyPairId,
+	pub encrypted_hmac_key: String,
+	pub encrypted_hmac_alg: String,
 
 	//only for user group key rotation not for normal
 	#[serde(skip_serializing_if = "Option::is_none")]
@@ -207,6 +209,7 @@ pub struct GroupLightServerData
 	pub created_time: u128,
 	pub joined_time: u128,
 	pub access_by: GroupUserAccessBy,
+	pub is_connected_group: bool,
 }
 
 /**
@@ -226,6 +229,9 @@ pub struct GroupServerData
 	pub joined_time: u128,
 	pub access_by: GroupUserAccessBy,
 	pub is_connected_group: bool,
+	pub encrypted_hmac_key: String,
+	pub encrypted_hmac_alg: String,
+	pub encrypted_hmac_encryption_key_id: SymKeyId, //what group key was used to encrypt this key
 }
 
 impl GroupServerData
