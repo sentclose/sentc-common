@@ -4,7 +4,7 @@ use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
 use serde_json::{from_str, to_string};
 
-use crate::group::{CreateData, GroupInviteReqList, GroupKeyServerOutput, GroupKeysForNewMemberServerInput};
+use crate::group::{CreateData, GroupHmacData, GroupInviteReqList, GroupKeyServerOutput, GroupKeysForNewMemberServerInput};
 use crate::{DeviceId, EncryptionKeyPairId, GroupId, SignKeyPairId, SymKeyId, UserId};
 
 #[derive(Serialize, Deserialize)]
@@ -355,9 +355,7 @@ pub struct DoneLoginServerOutput
 	pub jwt: String,
 	pub refresh_token: String,
 	pub user_keys: Vec<GroupKeyServerOutput>,
-	pub encrypted_hmac_key: String,
-	pub encrypted_hmac_alg: String,
-	pub encrypted_hmac_encryption_key_id: SymKeyId, //what group key was used to encrypt this key
+	pub hmac_keys: Vec<GroupHmacData>,
 }
 
 //as base64 encoded string from the server
