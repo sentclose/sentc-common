@@ -14,6 +14,7 @@ extern crate alloc;
 use alloc::string::String;
 
 pub mod content;
+pub mod content_searchable;
 pub mod crypto;
 pub mod file;
 pub mod group;
