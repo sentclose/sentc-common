@@ -14,6 +14,14 @@ pub struct ListSearchItem
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct SearchCreateDataLight
+{
+	pub hashes: Vec<String>,
+	pub alg: String,
+	pub key_id: SymKeyId,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct SearchCreateData
 {
 	#[serde(skip_serializing_if = "Option::is_none")]
