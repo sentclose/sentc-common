@@ -489,3 +489,14 @@ pub struct UserJwtInfo
 	pub id: UserId,
 	pub device_id: DeviceId,
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct Claims
+{
+	//jwt defaults
+	pub aud: UserId,   //the user id
+	pub sub: DeviceId, //the device id
+	pub exp: usize,
+	pub iat: usize,
+	pub fresh: bool, //was this token from refresh jwt or from login
+}
