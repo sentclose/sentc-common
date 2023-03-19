@@ -482,3 +482,10 @@ pub struct UserDeviceList
 	pub time: u128,
 	pub device_identifier: String,
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct UserJwtInfo
+{
+	pub id: UserId,
+	pub device_id: DeviceId,
+}
