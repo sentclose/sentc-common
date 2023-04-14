@@ -3,6 +3,7 @@ use alloc::vec::Vec;
 
 use serde::{Deserialize, Serialize};
 
+use crate::crypto::SignHead;
 use crate::{FileId, FileSessionId, GeneralIdFormat, PartId, SymKeyId, UserId};
 
 /**
@@ -72,4 +73,14 @@ pub struct FileNameUpdate
 pub struct FilePartRegisterOutput
 {
 	pub part_id: PartId,
+}
+
+//__________________________________________________________________________________________________
+
+#[derive(Serialize, Deserialize)]
+pub struct FileHead
+{
+	pub key: String,
+	pub sign: Option<SignHead>,
+	pub sym_key_alg: String,
 }
