@@ -94,6 +94,7 @@ pub struct KeyRotationStartServerOutput
 #[derive(Serialize, Deserialize)]
 pub struct KeyRotationInput
 {
+	pub error: Option<String>,
 	pub encrypted_ephemeral_key_by_group_key_and_public_key: String,
 	pub encrypted_group_key_by_ephemeral: String,
 	pub ephemeral_alg: String,
