@@ -289,6 +289,7 @@ pub struct GroupKeysForNewMember
 pub struct GroupKeysForNewMemberServerInput
 {
 	pub keys: Vec<GroupKeysForNewMember>,
+	pub rank: Option<i32>,
 	pub key_session: bool, //when there are mor than 100 keys in this group -> the client wants a session
 }
 
