@@ -286,6 +286,12 @@ pub struct GroupKeysForNewMember
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct GroupNewMemberLightInput
+{
+	pub rank: Option<i32>,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct GroupKeysForNewMemberServerInput
 {
 	pub keys: Vec<GroupKeysForNewMember>,
