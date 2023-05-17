@@ -1,7 +1,11 @@
 [package]
 name = "sentc-crypto-common"
+description = "Common shared values between sentc server api and the sentc client sdk."
 version = "0.1.0"
 edition = "2021"
+license-file = "LICENSE"
+repository = "https://github.com/sentclose/sentc-common"
+homepage = "https://sentc.com/"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
