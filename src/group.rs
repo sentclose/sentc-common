@@ -61,7 +61,14 @@ pub struct KeyRotationData
 	pub encrypted_ephemeral_key: String, //encrypted by the old group key. encrypt this key with every other member public key on the server
 	pub previous_group_key_id: SymKeyId,
 	pub invoker_public_key_id: EncryptionKeyPairId,
-	pub signed_by_user: Option<UserId>,
+
+	//if user signed the new group key
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub signed_by_user_id: Option<UserId>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub signed_by_user_sign_key_id: Option<SignKeyPairId>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub signed_by_user_sign_key_alg: Option<String>,
 
 	//only for user group key rotation not for normal
 	#[serde(skip_serializing_if = "Option::is_none")]
@@ -103,7 +110,14 @@ pub struct KeyRotationInput
 	pub previous_group_key_id: SymKeyId,               //use this in the client sdk to load the right group key from the storage
 	pub time: u128,
 	pub new_group_key_id: SymKeyId, //to done the key rotation on the server
-	pub signed_by_user: Option<UserId>,
+
+	//if user signed the new group key
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub signed_by_user_id: Option<UserId>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub signed_by_user_sign_key_id: Option<SignKeyPairId>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub signed_by_user_sign_key_alg: Option<String>,
 }
 
 impl KeyRotationInput
