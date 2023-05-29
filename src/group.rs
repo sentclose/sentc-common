@@ -26,6 +26,8 @@ pub struct CreateData
 	pub verify_key: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub keypair_sign_alg: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub public_key_sig: Option<String>,
 }
 
 impl CreateData
@@ -77,6 +79,8 @@ pub struct KeyRotationData
 	pub verify_key: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub keypair_sign_alg: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub public_key_sig: Option<String>,
 }
 
 impl KeyRotationData
@@ -186,6 +190,10 @@ pub struct GroupKeyServerOutput
 	pub keypair_sign_alg: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub keypair_sign_id: Option<SignKeyPairId>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub public_key_sig: Option<String>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub public_key_sig_key_id: Option<String>,
 }
 
 impl GroupKeyServerOutput

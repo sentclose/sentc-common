@@ -211,6 +211,8 @@ pub struct UserPublicKeyData
 	pub public_key_pem: String,
 	pub public_key_alg: String,
 	pub public_key_id: EncryptionKeyPairId,
+	pub public_key_sig: Option<String>,
+	pub public_key_sig_key_id: Option<String>,
 }
 
 impl UserPublicKeyData
@@ -253,6 +255,8 @@ pub struct UserPublicKeyDataServerOutput
 	pub public_key_id: EncryptionKeyPairId,
 	pub public_key: String,
 	pub public_key_alg: String,
+	pub public_key_sig: Option<String>,
+	pub public_key_sig_key_id: Option<String>,
 }
 
 impl UserPublicKeyDataServerOutput
