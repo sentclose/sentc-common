@@ -4,7 +4,7 @@ use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
 
 use crate::crypto::SignHead;
-use crate::{FileId, FileSessionId, GeneralIdFormat, PartId, SymKeyId, UserId};
+use crate::{FileId, FileSessionId, GeneralIdFormat, PartId, UserId};
 
 /**
 # Who has access to this file
@@ -39,7 +39,8 @@ pub struct FileData
 	pub owner: UserId,
 	pub belongs_to: Option<GeneralIdFormat>, //can be a group or a user. if belongs to type is none then this is Option::None
 	pub belongs_to_type: BelongsToType,
-	pub key_id: SymKeyId,
+	pub encrypted_key: String,
+	pub encrypted_key_alg: String,
 	pub encrypted_file_name: Option<String>,
 	pub part_list: Vec<FilePartListItem>,
 }
@@ -49,7 +50,8 @@ pub struct FileData
 #[derive(Serialize, Deserialize)]
 pub struct FileRegisterInput
 {
-	pub key_id: SymKeyId,
+	pub encrypted_key: String,
+	pub encrypted_key_alg: String,
 	pub master_key_id: String, //can be group key or user private / public key pair id
 	pub belongs_to_id: Option<GeneralIdFormat>,
 	pub belongs_to_type: BelongsToType,
