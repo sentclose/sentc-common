@@ -18,6 +18,8 @@ pub struct CreateData
 	pub creator_public_key_id: EncryptionKeyPairId,
 	pub encrypted_hmac_key: String,
 	pub encrypted_hmac_alg: String,
+	pub encrypted_sortable_key: String,
+	pub encrypted_sortable_alg: String,
 
 	//only for user group key rotation not for normal
 	#[serde(skip_serializing_if = "Option::is_none")]
@@ -220,6 +222,16 @@ pub struct GroupHmacData
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct GroupSortableData
+{
+	pub id: SymKeyId,
+	pub encrypted_sortable_key: String,
+	pub encrypted_sortable_alg: String,
+	pub encrypted_sortable_encryption_key_id: SymKeyId,
+	pub time: u128,
+}
+
+#[derive(Serialize, Deserialize)]
 pub enum GroupUserAccessBy
 {
 	User,
@@ -259,6 +271,7 @@ pub struct GroupServerData
 	pub parent_group_id: Option<GroupId>,
 	pub keys: Vec<GroupKeyServerOutput>,
 	pub hmac_keys: Vec<GroupHmacData>,
+	pub sortable_keys: Vec<GroupSortableData>,
 	pub key_update: bool,
 	pub rank: i32,
 	pub created_time: u128,

@@ -15,6 +15,7 @@ use alloc::string::String;
 
 pub mod content;
 pub mod content_searchable;
+pub mod content_sortable;
 pub mod crypto;
 pub mod file;
 pub mod group;
