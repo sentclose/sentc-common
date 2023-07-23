@@ -4,7 +4,7 @@ use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
 use serde_json::{from_str, to_string};
 
-use crate::group::{CreateData, GroupHmacData, GroupInviteReqList, GroupKeyServerOutput, GroupKeysForNewMemberServerInput};
+use crate::group::{CreateData, GroupHmacData, GroupInviteReqList, GroupKeyServerOutput, GroupKeysForNewMemberServerInput, GroupNewMemberLightInput};
 use crate::{DeviceId, EncryptionKeyPairId, GroupId, SignKeyPairId, SymKeyId, UserId};
 
 #[derive(Serialize, Deserialize)]
@@ -102,6 +102,13 @@ pub struct UserDeviceRegisterOutput
 	pub device_identifier: String,
 	pub public_key_string: String,
 	pub keypair_encrypt_alg: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct UserDeviceDoneRegisterInputLight
+{
+	pub user_group: GroupNewMemberLightInput,
+	pub token: String,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -400,6 +407,14 @@ pub struct DoneLoginLightOutput
 	pub jwt: String,
 	pub device_id: DeviceId,
 	pub refresh_token: String,
+	//export the keys for the knowledge proof
+	pub encrypted_master_key: String,
+	pub encrypted_private_key: String,
+	pub public_key_string: String,
+	pub keypair_encrypt_alg: String,
+	pub encrypted_sign_key: String,
+	pub verify_key_string: String,
+	pub keypair_sign_alg: String,
 }
 
 /**

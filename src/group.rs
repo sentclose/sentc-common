@@ -304,6 +304,12 @@ pub struct GroupDataCheckUpdateServerOutput
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct GroupDataCheckUpdateServerOutputLight
+{
+	pub rank: i32,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct GroupUserListItem
 {
 	pub user_id: UserId,
