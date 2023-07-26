@@ -363,10 +363,7 @@ impl DoneLoginServerInput
 pub struct DoneLoginServerOutput
 {
 	pub device_keys: DoneLoginServerKeysOutput,
-	pub jwt: String,
-	pub refresh_token: String,
-	pub user_keys: Vec<GroupKeyServerOutput>,
-	pub hmac_keys: Vec<GroupHmacData>,
+	pub challenge: String,
 }
 
 //as base64 encoded string from the server
@@ -401,20 +398,27 @@ impl DoneLoginServerKeysOutput
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct DoneLoginLightOutput
+pub struct VerifyLoginInput
 {
-	pub user_id: UserId,
+	pub auth_key: String,
+	pub device_identifier: String,
+	pub challenge: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct VerifyLoginOutput
+{
+	pub user_keys: Vec<GroupKeyServerOutput>,
+	pub hmac_keys: Vec<GroupHmacData>,
 	pub jwt: String,
-	pub device_id: DeviceId,
 	pub refresh_token: String,
-	//export the keys for the knowledge proof
-	pub encrypted_master_key: String,
-	pub encrypted_private_key: String,
-	pub public_key_string: String,
-	pub keypair_encrypt_alg: String,
-	pub encrypted_sign_key: String,
-	pub verify_key_string: String,
-	pub keypair_sign_alg: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct VerifyLoginLightOutput
+{
+	pub jwt: String,
+	pub refresh_token: String,
 }
 
 /**
