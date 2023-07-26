@@ -3,30 +3,11 @@ use alloc::vec::Vec;
 
 use serde::{Deserialize, Serialize};
 
-use crate::{CategoryId, ContentId, SymKeyId};
+use crate::SymKeyId;
 
 #[derive(Serialize, Deserialize)]
-pub struct ListSearchItem
+pub struct SearchableCreateOutput
 {
-	pub id: ContentId,
-	pub item_ref: String,
-	pub time: u128,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct SearchCreateDataLight
-{
-	pub hashes: Vec<String>,
-	pub alg: String,
-	pub key_id: SymKeyId,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct SearchCreateData
-{
-	#[serde(skip_serializing_if = "Option::is_none")]
-	pub category: Option<CategoryId>,
-	pub item_ref: String,
 	pub hashes: Vec<String>,
 	pub alg: String,
 	pub key_id: SymKeyId,
