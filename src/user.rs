@@ -359,15 +359,23 @@ impl DoneLoginServerInput
 	}
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub struct DoneLoginServerOutput
 {
 	pub device_keys: DoneLoginServerKeysOutput,
 	pub challenge: String,
 }
 
-//as base64 encoded string from the server
+#[allow(clippy::large_enum_variant)]
 #[derive(Serialize, Deserialize)]
+pub enum DoneLoginServerReturn
+{
+	Otp,
+	Direct(DoneLoginServerOutput),
+}
+
+//as base64 encoded string from the server
+#[derive(Serialize, Deserialize, Clone)]
 pub struct DoneLoginServerKeysOutput
 {
 	pub encrypted_master_key: String,
@@ -522,4 +530,26 @@ pub struct Claims
 	pub exp: usize,
 	pub iat: usize,
 	pub fresh: bool, //was this token from refresh jwt or from login
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct OtpRegister
+{
+	pub secret: String, //base32 endowed secret
+	pub alg: &'static str,
+	pub recover: [String; 6],
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct OtpInput
+{
+	pub token: String,
+	pub auth_key: String,
+	pub device_identifier: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct OtpRecoveryKeysOutput
+{
+	pub keys: Vec<String>,
 }
