@@ -536,7 +536,7 @@ pub struct Claims
 pub struct OtpRegister
 {
 	pub secret: String, //base32 endowed secret
-	pub alg: &'static str,
+	pub alg: String,
 	pub recover: [String; 6],
 }
 
