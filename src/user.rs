@@ -537,7 +537,7 @@ pub struct OtpRegister
 {
 	pub secret: String, //base32 endowed secret
 	pub alg: String,
-	pub recover: [String; 6],
+	pub recover: Vec<String>,
 }
 
 #[derive(Serialize, Deserialize)]
