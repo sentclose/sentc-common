@@ -435,6 +435,36 @@ pub struct LoginForcedInput
 	pub user_identifier: String,
 }
 
+#[derive(Serialize, Deserialize)]
+pub struct VerifyLoginForcedEntity
+{
+	pub device_id: DeviceId,
+	pub user_id: UserId,
+	pub user_group_id: GroupId,
+
+	pub encrypted_master_key: String,
+	pub encrypted_private_key: String,
+	pub public_key_string: String,
+	pub keypair_encrypt_alg: String,
+	pub encrypted_sign_key: String,
+	pub verify_key_string: String,
+	pub keypair_sign_alg: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct LoginForcedOutput
+{
+	pub device_keys: VerifyLoginForcedEntity,
+	pub verify: VerifyLoginOutput,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct LoginForcedLightOutput
+{
+	pub device_keys: VerifyLoginForcedEntity,
+	pub verify: VerifyLoginLightOutput,
+}
+
 /**
 For refresh jwt
 */
