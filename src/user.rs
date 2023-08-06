@@ -429,6 +429,12 @@ pub struct VerifyLoginLightOutput
 	pub refresh_token: String,
 }
 
+#[derive(Serialize, Deserialize)]
+pub struct LoginForcedInput
+{
+	pub user_identifier: String,
+}
+
 /**
 For refresh jwt
 */
