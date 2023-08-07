@@ -430,7 +430,7 @@ pub struct VerifyLoginLightOutput
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct LoginForcedInput
+pub struct UserForcedAction
 {
 	pub user_identifier: String,
 }
