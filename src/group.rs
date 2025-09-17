@@ -326,7 +326,7 @@ pub struct GroupUserListItem
 	pub user_type: i32,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub struct GroupKeysForNewMember
 {
 	pub encrypted_group_key: String, //base64 encoded
