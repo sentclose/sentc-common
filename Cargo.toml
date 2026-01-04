@@ -1,7 +1,7 @@
 [package]
 name = "sentc-crypto-common"
 description = "Common shared values between sentc server api and the sentc client sdk."
-version = "0.11.0"
+version = "0.12.0"
 edition = "2021"
 license-file = "LICENSE"
 repository = "https://github.com/sentclose/sentc-common"
@@ -11,9 +11,9 @@ authors = ["Sentclose <contact@sentclose.com>", "Jörn Heinemann <j.heinemann@se
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 include = [
-    "Cargo.toml",
-    "LICENSE",
-    "src/**/*",
+	"Cargo.toml",
+	"LICENSE",
+	"src/**/*",
 ]
 
 [dependencies]

@@ -21,7 +21,7 @@ pub struct CreateData
 	pub encrypted_sortable_key: String,
 	pub encrypted_sortable_alg: String,
 
-	//if user signed the new group key
+	//if the user signed the new group key
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub signed_by_user_id: Option<UserId>,
 	#[serde(skip_serializing_if = "Option::is_none")]
@@ -29,7 +29,7 @@ pub struct CreateData
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub group_key_sig: Option<String>,
 
-	//only for user group key rotation not for normal
+	//only for user group key rotation, not for normal
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub encrypted_sign_key: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
@@ -62,7 +62,7 @@ pub struct GroupCreateOutput
 #[derive(Serialize, Deserialize)]
 pub struct KeyRotationData
 {
-	pub encrypted_group_key_by_user: String, //encrypted by invoker public key
+	pub encrypted_group_key_by_user: String, //encrypted by an invoker public key
 	pub group_key_alg: String,
 	pub encrypted_group_key_alg: String, //info about how the encrypted group key was encrypted by the pk from the invoker (important for the server)
 	pub encrypted_private_group_key: String,
@@ -74,7 +74,7 @@ pub struct KeyRotationData
 	pub previous_group_key_id: SymKeyId,
 	pub invoker_public_key_id: EncryptionKeyPairId,
 
-	//if user signed the new group key
+	//if the user signed the new group key
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub signed_by_user_id: Option<UserId>,
 	#[serde(skip_serializing_if = "Option::is_none")]
@@ -82,7 +82,7 @@ pub struct KeyRotationData
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub group_key_sig: Option<String>,
 
-	//only for user group key rotation not for normal
+	//only for user group key rotation, not for normal
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub encrypted_sign_key: Option<String>,
 	#[serde(skip_serializing_if = "Option::is_none")]
@@ -120,7 +120,7 @@ pub struct KeyRotationInput
 	pub encrypted_ephemeral_key_by_group_key_and_public_key: String,
 	pub encrypted_group_key_by_ephemeral: String,
 	pub ephemeral_alg: String,
-	pub encrypted_eph_key_key_id: EncryptionKeyPairId, //the public key id which was used to encrypt the eph key on the server.
+	pub encrypted_eph_key_key_id: EncryptionKeyPairId, //the public key id, which was used to encrypt the eph key on the server.
 	pub previous_group_key_id: SymKeyId,               //use this in the client sdk to load the right group key from the storage
 	pub time: u128,
 	pub new_group_key_id: SymKeyId, //to finish the key rotation on the server
@@ -161,11 +161,11 @@ impl DoneKeyRotationData
 }
 
 /**
-# the current keys of a group
+# The current keys of a group
 
-contains:
+Contains:
 - encrypted group key
-- encrypted private group (e.g. for subgroup)
+- encrypted private group (e.g., for subgroup)
 - public key
 - and which public key was used to encrypt the group key
 
@@ -184,7 +184,7 @@ pub struct GroupKeyServerOutput
 	pub user_public_key_id: EncryptionKeyPairId, //to know what private key we should use to decrypt
 	pub time: u128,
 
-	//if user signed the new group key
+	//if the user signed the new group key
 	#[serde(skip_serializing_if = "Option::is_none")]
 	pub signed_by_user_id: Option<UserId>,
 	#[serde(skip_serializing_if = "Option::is_none")]
@@ -239,7 +239,7 @@ pub struct GroupSortableData
 	pub time: u128,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub enum GroupUserAccessBy
 {
 	User,
@@ -255,7 +255,7 @@ pub enum GroupUserAccessBy
 /**
 The same as the real group data but without the keys.
  */
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub struct GroupLightServerData
 {
 	pub group_id: GroupId,
